@@ -1,0 +1,15 @@
+services:
+  minio:
+    build:
+      context: .
+      dockerfile: Dockerfile_minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    tmpfs:
+      - /minio_dir:size=1m
+  load:
+    build:
+      context: .
+      dockerfile: Dockerfile_load
+    depends_on: ["minio"]
