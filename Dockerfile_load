@@ -1,0 +1,8 @@
+FROM python:3
+
+RUN pip3 install pandas minio pyarrow fastparquet huggingface_hub
+
+COPY load_data.py /load_data.py
+
+WORKDIR /
+ENTRYPOINT ["python3", "load_data.py"]
